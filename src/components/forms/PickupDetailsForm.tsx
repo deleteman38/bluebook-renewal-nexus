@@ -81,7 +81,7 @@ const PickupDetailsForm = ({ data, onSubmit, onBack, isSubmitting }: PickupDetai
   const minDate = tomorrow.toISOString().split('T')[0];
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6 py-12">
+    <div className="min-h-screen flex items-center justify-center py-12">
       <div className="w-full max-w-lg">
         <div className="card-step animate-slide-up">
           {/* Header */}

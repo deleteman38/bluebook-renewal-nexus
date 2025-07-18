@@ -160,9 +160,9 @@ const Index = () => {
 
   // Show form steps
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-gray-50 mobile-safe-area">
       {/* Progress Bar */}
-      <div className="pt-8 px-6">
+      <div className="pt-8 mobile-container">
         <ProgressBar currentStep={formStep} totalSteps={3} />
       </div>
 
@@ -171,7 +171,7 @@ const Index = () => {
         {formStep === 1 && (
           <div 
             key="step-1"
-            className={`${slideDirection === 'right' ? 'animate-slide-in-right' : 'animate-slide-in-left'}`}
+            className={`mobile-container ${slideDirection === 'right' ? 'animate-slide-in-right' : 'animate-slide-in-left'}`}
           >
             <PersonalInfoForm
               data={formData.personalInfo}
@@ -183,7 +183,7 @@ const Index = () => {
         {formStep === 2 && (
           <div 
             key="step-2"
-            className={`${slideDirection === 'right' ? 'animate-slide-in-right' : 'animate-slide-in-left'}`}
+            className={`mobile-container ${slideDirection === 'right' ? 'animate-slide-in-right' : 'animate-slide-in-left'}`}
           >
             <VehicleDetailsForm
               data={formData.vehicleDetails}
@@ -196,7 +196,7 @@ const Index = () => {
         {formStep === 3 && (
           <div 
             key="step-3"
-            className={`${slideDirection === 'right' ? 'animate-slide-in-right' : 'animate-slide-in-left'}`}
+            className={`mobile-container ${slideDirection === 'right' ? 'animate-slide-in-right' : 'animate-slide-in-left'}`}
           >
             <PickupDetailsForm
               data={formData.pickupDetails}

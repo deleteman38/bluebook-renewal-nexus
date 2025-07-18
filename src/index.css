@@ -119,12 +119,37 @@
 
   body {
     @apply bg-gradient-to-b from-blue-50 to-gray-50 text-foreground min-h-screen;
+    /* Mobile-specific improvements */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    overscroll-behavior: none;
+  }
+
+  /* Mobile safe area for notched devices */
+  @supports (padding: max(0px)) {
+    .safe-area-top {
+      padding-top: max(1rem, env(safe-area-inset-top));
+    }
+    
+    .safe-area-bottom {
+      padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+    
+    .safe-area-x {
+      padding-left: max(1rem, env(safe-area-inset-left));
+      padding-right: max(1rem, env(safe-area-inset-right));
+    }
   }
 }
 
 @layer components {
   .btn-hero {
     @apply bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden;
+    /* Mobile touch optimization */
+    min-height: 44px;
+    touch-action: manipulation;
   }
 
   .btn-hero::before {
@@ -134,14 +159,22 @@
 
   .card-step {
     @apply bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
+    /* Mobile responsiveness */
+    @apply max-w-full mx-auto;
   }
 
   .form-input {
     @apply w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm;
+    /* Mobile input optimization */
+    min-height: 44px;
+    font-size: 16px; /* Prevents zoom on iOS */
   }
 
   .progress-step {
     @apply flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all duration-300;
+    /* Mobile touch target */
+    min-width: 44px;
+    min-height: 44px;
   }
 
   .progress-step.active {
@@ -154,6 +187,15 @@
 
   .progress-step.inactive {
     @apply bg-gray-100 border-gray-300 text-gray-400;
+  }
+
+  /* Mobile-specific components */
+  .mobile-container {
+    @apply px-4 sm:px-6 lg:px-8 max-w-lg mx-auto;
+  }
+
+  .mobile-safe-area {
+    @apply safe-area-top safe-area-bottom safe-area-x;
   }
 }
 
