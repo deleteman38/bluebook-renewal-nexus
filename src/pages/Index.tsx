@@ -32,6 +32,8 @@ interface FormData {
 const Index = () => {
   const [currentScreen, setCurrentScreen] = useState<Screen>('splash');
   const [formStep, setFormStep] = useState<FormStep>(1);
+  const [previousStep, setPreviousStep] = useState<FormStep>(1);
+  const [slideDirection, setSlideDirection] = useState<'left' | 'right'>('right');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -64,19 +66,27 @@ const Index = () => {
 
   const handlePersonalInfoNext = (data: typeof formData.personalInfo) => {
     setFormData(prev => ({ ...prev, personalInfo: data }));
+    setPreviousStep(1);
+    setSlideDirection('right');
     setFormStep(2);
   };
 
   const handleVehicleDetailsNext = (data: typeof formData.vehicleDetails) => {
     setFormData(prev => ({ ...prev, vehicleDetails: data }));
+    setPreviousStep(2);
+    setSlideDirection('right');
     setFormStep(3);
   };
 
   const handleVehicleDetailsBack = () => {
+    setPreviousStep(2);
+    setSlideDirection('left');
     setFormStep(1);
   };
 
   const handlePickupDetailsBack = () => {
+    setPreviousStep(3);
+    setSlideDirection('left');
     setFormStep(2);
   };
 
@@ -157,29 +167,46 @@ const Index = () => {
       </div>
 
       {/* Form Steps */}
-      {formStep === 1 && (
-        <PersonalInfoForm
-          data={formData.personalInfo}
-          onNext={handlePersonalInfoNext}
-        />
-      )}
+      <div className="relative overflow-hidden">
+        {formStep === 1 && (
+          <div 
+            key="step-1"
+            className={`${slideDirection === 'right' ? 'animate-slide-in-right' : 'animate-slide-in-left'}`}
+          >
+            <PersonalInfoForm
+              data={formData.personalInfo}
+              onNext={handlePersonalInfoNext}
+            />
+          </div>
+        )}
 
-      {formStep === 2 && (
-        <VehicleDetailsForm
-          data={formData.vehicleDetails}
-          onNext={handleVehicleDetailsNext}
-          onBack={handleVehicleDetailsBack}
-        />
-      )}
+        {formStep === 2 && (
+          <div 
+            key="step-2"
+            className={`${slideDirection === 'right' ? 'animate-slide-in-right' : 'animate-slide-in-left'}`}
+          >
+            <VehicleDetailsForm
+              data={formData.vehicleDetails}
+              onNext={handleVehicleDetailsNext}
+              onBack={handleVehicleDetailsBack}
+            />
+          </div>
+        )}
 
-      {formStep === 3 && (
-        <PickupDetailsForm
-          data={formData.pickupDetails}
-          onSubmit={handleFinalSubmit}
-          onBack={handlePickupDetailsBack}
-          isSubmitting={isSubmitting}
-        />
-      )}
+        {formStep === 3 && (
+          <div 
+            key="step-3"
+            className={`${slideDirection === 'right' ? 'animate-slide-in-right' : 'animate-slide-in-left'}`}
+          >
+            <PickupDetailsForm
+              data={formData.pickupDetails}
+              onSubmit={handleFinalSubmit}
+              onBack={handlePickupDetailsBack}
+              isSubmitting={isSubmitting}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

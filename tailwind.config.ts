@@ -99,6 +99,46 @@ export default {
 						transform: 'translateY(0)'
 					}
 				},
+				'slideInRight': {
+					'from': {
+						opacity: '0',
+						transform: 'translateX(100%)'
+					},
+					'to': {
+						opacity: '1',
+						transform: 'translateX(0)'
+					}
+				},
+				'slideInLeft': {
+					'from': {
+						opacity: '0',
+						transform: 'translateX(-100%)'
+					},
+					'to': {
+						opacity: '1',
+						transform: 'translateX(0)'
+					}
+				},
+				'slideOutRight': {
+					'from': {
+						opacity: '1',
+						transform: 'translateX(0)'
+					},
+					'to': {
+						opacity: '0',
+						transform: 'translateX(100%)'
+					}
+				},
+				'slideOutLeft': {
+					'from': {
+						opacity: '1',
+						transform: 'translateX(0)'
+					},
+					'to': {
+						opacity: '0',
+						transform: 'translateX(-100%)'
+					}
+				},
 				'fadeIn': {
 					'from': { opacity: '0' },
 					'to': { opacity: '1' }
@@ -113,6 +153,10 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'float': 'float 6s ease-in-out infinite',
 				'slide-up': 'slideUp 0.6s ease-out',
+				'slide-in-right': 'slideInRight 0.5s ease-out',
+				'slide-in-left': 'slideInLeft 0.5s ease-out',
+				'slide-out-right': 'slideOutRight 0.3s ease-in',
+				'slide-out-left': 'slideOutLeft 0.3s ease-in',
 				'fade-in': 'fadeIn 0.5s ease-out',
 				'pulse-slow': 'pulse-slow 3s ease-in-out infinite'
 			}

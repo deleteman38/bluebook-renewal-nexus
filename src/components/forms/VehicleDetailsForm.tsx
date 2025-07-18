@@ -200,7 +200,7 @@ const VehicleDetailsForm = ({ data, onNext, onBack }: VehicleDetailsFormProps) =
                 type="submit"
                 className="flex-1 btn-hero py-4 flex items-center justify-center gap-3"
               >
-                Continue to Pickup
+                Next
                 <ArrowRight className="w-5 h-5" />
               </Button>
             </div>

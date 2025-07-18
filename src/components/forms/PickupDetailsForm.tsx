@@ -115,7 +115,7 @@ const PickupDetailsForm = ({ data, onSubmit, onBack, isSubmitting }: PickupDetai
                 <p className="text-red-500 text-sm mt-1">{errors.pickupAddress}</p>
               )}
               <p className="text-gray-500 text-xs mt-1">
-                Please provide a detailed address for accurate pickup
+                Include area, ward number, and landmarks for easy location
               </p>
             </div>
 
@@ -189,7 +189,7 @@ const PickupDetailsForm = ({ data, onSubmit, onBack, isSubmitting }: PickupDetai
                   </>
                 ) : (
                   <>
-                    Submit Request
+                    Submit
                     <Send className="w-5 h-5" />
                   </>
                 )}
